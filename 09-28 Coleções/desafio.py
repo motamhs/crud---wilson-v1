@@ -264,7 +264,4 @@ print(abs(x))
 x = 10
 
 print(abs(x))
-x = 10
-
-print(abs(x))
-  
+ 
