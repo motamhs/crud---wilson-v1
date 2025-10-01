@@ -258,8 +258,4 @@ while not deseja_terminar_o_programa:
         deseja_terminar_o_programa = True
         
 print('PROGRAMA ENCERRADO COM SUCESSO!')
-x = 10
-
-print(abs(x))
-x = 10
-   sda 
+x = 10  
