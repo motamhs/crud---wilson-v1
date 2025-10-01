@@ -193,4 +193,6 @@ while True:
         else:
             print("Opção inválida!")
 
-verifica_permissao()1  
+vx = 10
+
+print(abs(x))
