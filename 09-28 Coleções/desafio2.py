@@ -195,4 +195,4 @@ while True:
 
 vx = 10
 
-print(abs(x))
+print(abs()
