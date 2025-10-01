@@ -193,6 +193,4 @@ while True:
         else:
             print("Opção inválida!")
 
-vx = 10
-
-print(abs()
+ 
