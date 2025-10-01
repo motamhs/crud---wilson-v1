@@ -257,5 +257,4 @@ while not deseja_terminar_o_programa:
     else: 
         deseja_terminar_o_programa = True
         
-print('PROGRAMA ENCERRADO COM SUCESSO!')
-x = 10  
+print('PROGRAMA ENCERRADO COM SUCESSO!') 
