@@ -6,7 +6,8 @@ def apresenteSe ():
     print('| Matheus Luciano - RA:25341                                  |')
     print('| Matheus Mota de Abreu - RA:25342                            |')
     print('| Pedro Isac - RA: 25567                                      |')
-    print('|                               |')
+    print('|                                                             |')
+    print('| Versão 2.0 de 22/abril/2025                                 |')
     print('|                                                             |')
     print('+-------------------------------------------------------------+')
 
