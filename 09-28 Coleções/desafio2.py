@@ -192,3 +192,5 @@ while True:
             break
         else:
             print("Opção inválida!")
+
+verifica_permissao()1  
