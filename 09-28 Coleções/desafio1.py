@@ -131,13 +131,17 @@ agenda = {}
 
 while True:
     print('+-------------------------------------------------------------+')
+    print('|                                                             |')
     print('|                      Cadastro Pessoal                       |')
+    print('|                                                             |')
     print('|  1- Cadastrar                                               |')
     print('|  2- Procurar                                                |')
     print('|  3- Listar                                                  |')
     print('|  4- Excluir                                                 |')
     print('|  5- Sair                                                    |')
+    print('|                                                             |')
     print('+-------------------------------------------------------------+')
+
 
     opcao = input("Opção: ")
     if opcao == "1":
