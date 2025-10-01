@@ -222,10 +222,10 @@ def cadastrar (agd):
     endereco=validar_end(endereco)
     
     
-    telefone=input('Telefone...........: ') #3223-2411
+    telefone=input('Telefone...........: ') 
     telefone=validar_telefone(telefone)
     
-    celular=input('Celular............: ') #(19)98948-4775
+    celular=input('Celular............: ')
     celular=validar_celular(celular)
     
     email=input('e-mail pessoal.....: ')
