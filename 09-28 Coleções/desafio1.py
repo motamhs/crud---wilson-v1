@@ -156,20 +156,3 @@ while True:
         break
     else:
         print("Opção inválida!")
-
-
-
-
-
-
-
-with open("lista_telefonica.txt", "w", encoding="utf-8") as arquivo:
-    for nome, info in agenda.items():
-        arquivo.write(f"Nome: {nome}\n")
-        arquivo.write(f"EDV: {info['EDV']}\n")
-        arquivo.write(f"Celular: {info['Celular']}\n")
-        arquivo.write(f"E-mail: {info['Email']}\n")
-        arquivo.write("-" * 50 + "\n")
-
-print("Contatos salvos em 'lista_telefonica.txt'.")
-print('PROGRAMA ENCERRADO COM SUCESSO!')

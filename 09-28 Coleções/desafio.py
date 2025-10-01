@@ -256,17 +256,5 @@ while not deseja_terminar_o_programa:
         excluir(lista)
     else: 
         deseja_terminar_o_programa = True
-
-        with open("lista_telefonica.txt", "w", encoding="utf-8") as arquivo:
-            for contato in lista:
-                nome, edv, celular, email = contato
-                arquivo.write(f"Nome: {nome}\n")
-                arquivo.write(f"EDV: {edv}\n")
-                arquivo.write(f"Celular: {celular}\n")
-                arquivo.write(f"E-mail: {email}\n")
-                arquivo.write("-" * 50 + "\n")
-
-        print("Contatos salvos em 'lista_telefonica.txt'.")
-
         
 print('PROGRAMA ENCERRADO COM SUCESSO!')
