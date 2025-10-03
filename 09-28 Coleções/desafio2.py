@@ -146,6 +146,7 @@ def verifica_permissao():
         else:
             print("Tipo de usuário inválido. Digite 'Admin' ou 'Padrão'.")
 
+
 agenda = {}
 
 tipo_usuario = verifica_permissao()
@@ -178,6 +179,14 @@ while True:
         elif opcao == "4":
             excluir(agenda)
         elif opcao == "5":
+            desejado = input("Deseja trocar de usuário (S ou N)? ")
+            desejado = desejado.upper()
+            if desejado in ["SIM","S"]:
+                tipo_usuario = verifica_permissao()
+            elif desejado in ["NÃO, N", "NAO"]:
+                break
+            else:
+                print("Escreva direito")
             break
         else:
             print("Opção inválida!")
@@ -189,8 +198,15 @@ while True:
         elif opcao == "3":
             listar(agenda)
         elif opcao == "4":
+            desejado = input("Deseja trocar de usuário (S ou N)? ")
+            desejado = desejado.upper()
+            if desejado in ["SIM","S"]:
+                tipo_usuario = verifica_permissao()
+            elif desejado in ["NÃO, N", "NAO"]:
+                break
+            else:
+                print("Escreva direito")
+            
             break
         else:
             print("Opção inválida!")
-
- 
