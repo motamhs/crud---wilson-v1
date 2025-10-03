@@ -27,13 +27,7 @@ def validar_celular(celular):
         elif celular[0] != '(' or celular[3] != ')' or celular[9] != '-':
             print('O celular deve seguir o formato (99)99999-9999.')
         else:
-            valido = True
-            for pos, c in enumerate(celular):
-                if pos in [0, 3, 9]:
-                    continue
-                if not c.isdigit():
-                    valido = False
-                    break
+             
             if valido:
                 return celular
             print('O celular deve seguir o formato (99)99999-9999.')
