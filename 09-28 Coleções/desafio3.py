@@ -1,3 +1,6 @@
+from reportlab.pdfgen import canvas
+from reportlab.lib.pagesizes import A4
+
 def umTexto(solicitacao, mensagem, valido):
     digitouDireito = False
     while not digitouDireito:
@@ -22,14 +25,18 @@ def validar_edv(edv):
 def validar_celular(celular):
     while True:
         celular = celular.strip()
-        valido=True
         if len(celular) != 14:
             print('O celular deve ter 14 caracteres, formato (99)99999-9999.')
-            valido=False
         elif celular[0] != '(' or celular[3] != ')' or celular[9] != '-':
             print('O celular deve seguir o formato (99)99999-9999.')
-            valido=False
         else:
+            valido = True
+            for pos, c in enumerate(celular):
+                if pos in [0, 3, 9]:
+                    continue
+                if not c.isdigit():
+                    valido = False
+                    break
             if valido:
                 return celular
             print('O celular deve seguir o formato (99)99999-9999.')
@@ -41,7 +48,7 @@ def validar_email(email):
         'gmail.com', 'hotmail.com', 'hotmail.com.br', 'outlook.com', 'outlook.com.br',
         'yahoo.com', 'yahoo.com.br', 'icloud.com', 'aol.com', 'proton.me', 'protonmail.com',
         'zoho.com', 'mail.com', 'gmx.com', 'gmx.net', 'bol.com.br', 'uol.com.br',
-        'terra.com.br', 'globo.com', 'r7.com', 'ig.com.br', 'zipmail.com.br','unicamp.br'
+        'terra.com.br', 'globo.com', 'r7.com', 'ig.com.br', 'zipmail.com.br','unicamp.br', 'br.bosch.com'
     ]
     while True:
         email = email.strip()
@@ -122,8 +129,59 @@ def excluir(agenda):
     else:
         print("Remoção não realizada!")
 
+def verifica_permissao():
+    while True:
+        tipo = input("Qual seu usuário (Padrão ou Admin)? ").strip().upper()
+        
+        if tipo in ["ADMIN", "ADM"]:
+            usuario = input("Digite seu usuário: ").strip()
+            senha = input("Digite sua senha: ").strip()
+            if senha == "1234":
+                print("Bem-vindo, Admin!")
+                return "ADMIN"
+            else:
+                print("Senha errada! Tente novamente.")
+        
+        elif tipo in ["PADRAO", "PADRÃO"]:
+            print("Bem-vindo, usuário padrão!")
+            return "PADRAO"
+        
+        else:
+            print("Tipo de usuário inválido. Digite 'Admin' ou 'Padrão'.")
+            
+            
+def salvar_em_pdf(agenda):
+    if not agenda:
+        print("Nenhum contato para salvar no PDF.")
+        return
+
+    c = canvas.Canvas("agenda.pdf", pagesize=A4)
+    largura, altura = A4
+    y = altura - 50 
+    
+    c.setFont("Helvetica-Bold", 14)
+    c.drawString(50, y, "Lista de Contatos - Nome e Celular")
+    y -= 30
+    c.setFont("Helvetica", 12)
+
+    for nome, info in agenda.items():
+        if y < 50: 
+            c.showPage()
+            y = altura - 50
+            c.setFont("Helvetica", 12)
+
+        linha = f"Nome: {nome}    Celular: {info['Celular']}"
+        c.drawString(50, y, linha)
+        y -= 20
+
+    c.save()
+    print("Contatos salvos em 'agenda.pdf'.")
+
+
 
 agenda = {}
+
+tipo_usuario = verifica_permissao()
 
 while True:
     print('+-------------------------------------------------------------+')
@@ -133,22 +191,40 @@ while True:
     print('|  1- Cadastrar                                               |')
     print('|  2- Procurar                                                |')
     print('|  3- Listar                                                  |')
-    print('|  4- Excluir                                                 |')
-    print('|  5- Sair                                                    |')
+    if tipo_usuario == "ADMIN":
+        print('|  4- Excluir                                                 |')
+        print('|  5- Sair                                                    |')
+    else:
+        print('|  4- Sair                                                    |')
     print('|                                                             |')
     print('+-------------------------------------------------------------+')
 
+    opcao = input("Opção: ").strip()
 
-    opcao = input("Opção: ")
-    if opcao == "1":
-        cadastrar(agenda)
-    elif opcao == "2":
-        procurar(agenda)
-    elif opcao == "3":
-        listar(agenda)
-    elif opcao == "4":
-        excluir(agenda)
-    elif opcao == "5":
-        break
-    else:
-        print("Opção inválida!")
+    if tipo_usuario == "ADMIN":
+        if opcao == "1":
+            cadastrar(agenda)
+        elif opcao == "2":
+            procurar(agenda)
+        elif opcao == "3":
+            listar(agenda)
+        elif opcao == "4":
+            excluir(agenda)
+        elif opcao == "5":
+            salvar_em_pdf(agenda)
+            break
+        else:
+            print("Opção inválida!")
+    else: 
+        if opcao == "1":
+            print("Acesso negado! Apenas Admin pode cadastrar.")
+        elif opcao == "2":
+            procurar(agenda)
+        elif opcao == "3":
+            listar(agenda)
+        elif opcao == "4":
+            salvar_em_pdf(agenda)
+            break
+        else:
+            print("Opção inválida!")
+
