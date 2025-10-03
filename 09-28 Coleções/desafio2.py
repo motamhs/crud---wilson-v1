@@ -150,63 +150,66 @@ def verifica_permissao():
 agenda = {}
 
 tipo_usuario = verifica_permissao()
+acabou=False
+while not acabou:
+    while True:
+        print('+-------------------------------------------------------------+')
+        print('|                                                             |')
+        print('|                      Cadastro Pessoal                       |')
+        print('|                                                             |')
+        print('|  1- Cadastrar                                               |')
+        print('|  2- Procurar                                                |')
+        print('|  3- Listar                                                  |')
+        if tipo_usuario == "ADMIN":
+            print('|  4- Excluir                                                 |')
+            print('|  5- Sair                                                    |')
+        else:
+            print('|  4- Sair                                                    |')
+        print('|                                                             |')
+        print('+-------------------------------------------------------------+')
 
-while True:
-    print('+-------------------------------------------------------------+')
-    print('|                                                             |')
-    print('|                      Cadastro Pessoal                       |')
-    print('|                                                             |')
-    print('|  1- Cadastrar                                               |')
-    print('|  2- Procurar                                                |')
-    print('|  3- Listar                                                  |')
-    if tipo_usuario == "ADMIN":
-        print('|  4- Excluir                                                 |')
-        print('|  5- Sair                                                    |')
-    else:
-        print('|  4- Sair                                                    |')
-    print('|                                                             |')
-    print('+-------------------------------------------------------------+')
+        opcao = input("Opção: ").strip()
 
-    opcao = input("Opção: ").strip()
-
-    if tipo_usuario == "ADMIN":
-        if opcao == "1":
-            cadastrar(agenda)
-        elif opcao == "2":
-            procurar(agenda)
-        elif opcao == "3":
-            listar(agenda)
-        elif opcao == "4":
-            excluir(agenda)
-        elif opcao == "5":
-            desejado = input("Deseja trocar de usuário (S ou N)? ")
-            desejado = desejado.upper()
-            if desejado in ["SIM","S"]:
-                tipo_usuario = verifica_permissao()
-            elif desejado in ["NÃO, N", "NAO"]:
+        if tipo_usuario == "ADMIN":
+            if opcao == "1":
+                cadastrar(agenda)
+            elif opcao == "2":
+                procurar(agenda)
+            elif opcao == "3":
+                listar(agenda)
+            elif opcao == "4":
+                excluir(agenda)
+            elif opcao == "5":
+                desejado = input("Deseja trocar de usuário (S ou N)? ")
+                desejado = desejado.upper()
+                if desejado in ["SIM","S"]:
+                    tipo_usuario = verifica_permissao()
+                elif desejado in ["NÃO, N", "NAO"]:
+                    acabou=True
+                    break
+                else:
+                    print("Escreva direito")
                 break
             else:
-                print("Escreva direito")
-            break
-        else:
-            print("Opção inválida!")
-    else: 
-        if opcao == "1":
-            print("Acesso negado! Apenas Admin pode cadastrar.")
-        elif opcao == "2":
-            procurar(agenda)
-        elif opcao == "3":
-            listar(agenda)
-        elif opcao == "4":
-            desejado = input("Deseja trocar de usuário (S ou N)? ")
-            desejado = desejado.upper()
-            if desejado in ["SIM","S"]:
-                tipo_usuario = verifica_permissao()
-            elif desejado in ["NÃO, N", "NAO"]:
+                print("Opção inválida!")
+        else: 
+            if opcao == "1":
+                print("Acesso negado! Apenas Admin pode cadastrar.")
+            elif opcao == "2":
+                procurar(agenda)
+            elif opcao == "3":
+                listar(agenda)
+            elif opcao == "4":
+                desejado = input("Deseja trocar de usuário (S ou N)? ")
+                desejado = desejado.upper()
+                if desejado in ["SIM","S"]:
+                    tipo_usuario = verifica_permissao()
+ 
+                elif desejado in ["NÃO, N", "NAO"]:
+                    acabou=True
+                    break
+                else:
+                    print("Escreva direito")
                 break
             else:
-                print("Escreva direito")
-            
-            break
-        else:
-            print("Opção inválida!")
+                print("Opção inválida!")
