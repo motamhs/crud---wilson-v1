@@ -90,7 +90,7 @@ def validar_email(email):
         'gmail.com', 'hotmail.com', 'hotmail.com.br', 'outlook.com', 'outlook.com.br',
         'yahoo.com', 'yahoo.com.br', 'icloud.com', 'aol.com', 'proton.me', 'protonmail.com',
         'zoho.com', 'mail.com', 'gmx.com', 'gmx.net', 'bol.com.br', 'uol.com.br',
-        'terra.com.br', 'globo.com', 'r7.com', 'ig.com.br', 'zipmail.com.br','unicamp.br'
+        'terra.com.br', 'globo.com', 'r7.com', 'ig.com.br', 'zipmail.com.br','unicamp.br', 'bosch.br'
     ]
 
     while True:
